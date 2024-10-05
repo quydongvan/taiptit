@@ -3,16 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ghép Ảnh</title>
+    <title>Tải PDF từ Hình ảnh</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Ghép Ảnh</h1>
-        <input type="file" id="upload" accept="image/*" multiple>
-        <canvas id="canvas"></canvas>
-        <button id="download">Tải Xuống</button>
+        <h1>Tạo PDF từ hình ảnh</h1>
+        <form id="downloadForm">
+            <label for="urlInput">Nhập đường link:</label>
+            <input type="text" id="urlInput" placeholder="Nhập đường link">
+            
+            <label for="numPages">Nhập số trang:</label>
+            <input type="number" id="numPages" min="1" placeholder="Số trang">
+
+            <button type="submit">Tải PDF</button>
+        </form>
+
+        <div id="progressContainer">
+            <div id="progressBar"></div>
+        </div>
+
+        <div id="result">
+            <a id="downloadLink" style="display:none;">Tải xuống PDF</a>
+        </div>
     </div>
     <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </body>
 </html>
