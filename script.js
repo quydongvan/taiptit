@@ -43,6 +43,7 @@ document.getElementById('downloadForm').addEventListener('submit', async functio
 
     if (images.length === 0) {
         alert("Không tải được ảnh nào.");
+        progressContainer.style.display = 'none';
         return;
     }
 
@@ -105,5 +106,5 @@ function getBase64Image(img) {
     ctx.drawImage(img, 0, 0);
 
     const dataURL = canvas.toDataURL("image/jpeg");
-    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+    return dataURL.replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
 }
