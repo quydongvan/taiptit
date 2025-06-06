@@ -10,8 +10,14 @@ document.getElementById('downloadForm').addEventListener('submit', async functio
         return;
     }
 
-    const docId = inputLink.split("doc=")[1].split("&")[0];
-    const subfolder = inputLink.split("subfolder=")[1].split("&")[0];
+    const params = new URL(inputLink).searchParams;
+    const docId = params.get('doc');
+    const subfolder = params.get('subfolder');
+
+    if (docId === null || subfolder === null) {
+        alert("Đường link thiếu tham số 'doc' hoặc 'subfolder'.");
+        return;
+    }
 
     const progressContainer = document.getElementById('progressContainer');
     const progressBar = document.getElementById('progressBar');
