@@ -1,9 +1,9 @@
 document.getElementById('downloadForm').addEventListener('submit', async function(event) {
     event.preventDefault();
 
-    const baseUrl = 'http://dlib.ptit.edu.vn/flowpaper/services/view.php';
+    const baseUrl = 'https://dlib.ptit.edu.vn/flowpaper/services/view.php';
     const inputLink = document.getElementById('urlInput').value;
-    const numPages = document.getElementById('numPages').value;
+    const numPages = parseInt(document.getElementById('numPages').value, 10);
 
     if (!inputLink || !numPages) {
         alert("Vui lòng nhập đường link và số trang.");
@@ -78,6 +78,7 @@ function loadImageFromUrl(url) {
 
 // Tạo file PDF từ các ảnh
 function createPdfFromImages(images) {
+    const { jsPDF } = window.jspdf;
     const pdf = new jsPDF();
 
     for (let i = 0; i < images.length; i++) {
@@ -105,5 +106,5 @@ function getBase64Image(img) {
     ctx.drawImage(img, 0, 0);
 
     const dataURL = canvas.toDataURL("image/jpeg");
-    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+    return dataURL.replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
 }
